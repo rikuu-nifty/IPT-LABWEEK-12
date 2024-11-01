@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+
+    <link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css"
+    >
+
+    <style>
+        .main__container {
+            width: 100dvw;
+            padding: 0px 500px;
+        }
+
+        h2 {
+            text-align: center;
+        }
+    </style>
+
+</head>
+<body>
+    <div class="main__container">
+
+        <!-- Display any errors -->
+        {{#errors}}
+        <div class="alert alert-danger" role="alert">
+            <ul>
+                {{#errors}}
+                    <li>{{.}}</li>
+                {{/errors}}
+            </ul>
+        </div>
+        {{/errors}}
+
+        <!-- Display remaining login attempts -->
+        {{#remaining_attempts}}
+        <p>Attempts remaining: {{remaining_attempts}}</p>
+        {{/remaining_attempts}}
+
+        <form action="/login" method="post">
+            <div>
+                <!-- Email (required) -->
+                <label for="email">Email: <span style="color: red">*</span> </label>
+                <input type="text" id="email" name="email" required {{#form_disabled}}disabled{{/form_disabled}}>
+            </div>
+    
+            <div>
+                <!-- Password (required) -->
+                <label for="password">Password: <span style="color: red">*</span> </label>
+                <input type="password" id="password" name="password" required {{#form_disabled}}disabled{{/form_disabled}}>
+            </div>
+    
+            <div>
+                <!-- Submit button, hidden if form is disabled -->
+                <button type="submit" {{#form_disabled}}style="display:none;"{{/form_disabled}}>Login</button>
+            </div>
+        </form>
+
+        <!-- Show message when form is disabled -->
+        {{#form_disabled}}
+        <p class="alert alert-danger">Too many failed login attempts. Please try again later.</p>
+        {{/form_disabled}}
+    </div>
+</body>
+</html>

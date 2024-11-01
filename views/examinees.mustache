@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Examinees Results</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css" />
+</head>
+<body>
+    <main class="container">
+        <h1>Examinee's Results</h1>
+        {{#data}}
+        <article>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Field</th>
+                        <th>Value</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Attempt Date</td>
+                        <td>{{attempt_date}}</td>
+                    </tr>
+                    <tr>
+                        <td>Examinee Name</td>
+                        <td>{{examinee_name}}</td>
+                    </tr>
+                    <tr>
+                        <td>Exam Items</td>
+                        <td>{{exam_items}}</td>
+                    </tr>
+                    <tr>
+                        <td>Exam Score</td>
+                        <td class="score">{{exam_score}}</td>
+                    </tr>
+                    <tr>
+                    </tr>
+                    <tr>
+                        <td>Export</td>
+                        <td>
+                            <ul>
+                                <a href="/exam-attempts/{{attempt_id}}"><button>Export PDF</button></a>
+                            </ul>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </article>
+        {{/data}}
+        <a href="/logout"><button>Logout</button></a>
+    </main>
+</body>
+</html>

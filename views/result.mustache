@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Result</title>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css" />
+
+    <style>
+        body {padding-top: 50px;}
+        .main__container { width: 100dvw; padding: 0px 500px;}
+        h2 { text-align: center;}
+    </style>
+
+</head>
+<body>
+    <div class="main__container">
+        <h2>Result</h2>
+        <h3>Hi {{ complete_name }} &lt;{{ email }}&gt;!</h3>
+
+        <h1>You got a score of {{ total_score }} out of {{ question_items }} items.</h1>
+
+        <table>
+            <tr>
+                <th>#</th>
+                <th>Question</th>
+                <th>Choices</th>
+                <th>Your Answer</th>
+                <th>Correct Answer</th>
+            </tr>
+            {{#questions}}
+            <tr>
+                <td>{{ item_number }}</td>
+                <td>{{ question }}</td>
+                <td>
+                    {{#choices}}
+                    <li><strong style="color: blue;">{{ letter }}</strong> {{ choice }}</li>
+                    {{/choices}}
+                </td>
+                <td>{{ user_answer }}</td>
+                <td>{{ correct_answer }}</td>
+            </tr>
+            {{/questions}}
+        </table>
+
+        <a href="/register"><button>Click here to restart for the exam</button></a>
+        <a href="/examinees"><button>Click here to see examinees</button></a>
+
+        <a href="/logout"><button>Logout</button></a>
+
+    </div>
+</body>
+</html>
